@@ -46,7 +46,10 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// Health check
+// Root + Health check
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'EduRank API is running 🚀' });
+});
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
